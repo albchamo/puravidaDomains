@@ -1,0 +1,20 @@
+/* components/Header.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px;
+  background-color: #fff; /* Adjust the color to match your theme */
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: #000; /* Cream color for the text */
+  margin: 0; /* Removes default margin from h1 */
+  text-decoration: none
+}
+

@@ -1,0 +1,92 @@
+/* components/DomainDetail.module.css */
+.container {
+    display: flex;
+    max-width: 900px;
+    margin: 50px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #FFFFFF;
+  }
+  
+  .imageSection {
+    flex-basis: 50%;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .domainImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .description {
+    margin-top: 20px;
+    color: grey;
+  }
+  
+  .infoSection {
+    flex-basis: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .domainName {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .priceSection {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .priceLabel {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .price {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .buyNowButton,
+  .makeOfferButton {
+    background-color: #F6AD55;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;  }
+  
+  .offerSection {
+    display: flex;
+    align-items: center;
+  }
+  
+  .offerLabel {
+    flex-grow: 1;
+  }
+  
+  .offerInput {
+    flex-grow: 2;
+    margin: 0 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .imageSection,
+    .infoSection {
+      flex-basis: auto;
+    }
+  }
+  

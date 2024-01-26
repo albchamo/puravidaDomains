@@ -1,0 +1,25 @@
+/* styles/globals.css */
+/* styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* styles/globals.css */
+body {
+    font-family: 'Inter', sans-serif;
+    color: grey; /* Sets the body text color to grey */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: black; /* Sets the headings text color to black */
+  }
+  
+  h1 {
+    font-weight: 400; /* You can adjust the weight as needed */
+  }
+  
+  a {
+    color: inherit; /* Optional: Makes links inherit the color from the parent text */
+    text-decoration: none;
+  }
+  

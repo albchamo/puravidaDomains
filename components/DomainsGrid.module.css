@@ -1,0 +1,10 @@
+/* components/DomainsGrid.module.css */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px; /* Adjust the gap to match the design */
+    padding: 24px; /* Adjust the padding to match the design */
+    max-width: 1200px; /* Adjust based on the maximum width you want */
+    margin: 0 auto; /* Centers the grid in the viewport */
+  }
+  

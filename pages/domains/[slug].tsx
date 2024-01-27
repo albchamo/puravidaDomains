@@ -8,9 +8,11 @@ import Header from '@/components/Header';
 type Domain = {
   id: number;
   domain_name: string;
+  meta_description: string;
+  title: string;
   price: number;
   description: string;
-  image_url: string;
+  image_url: string ; // Allow for null
 };
 
 type Props = {

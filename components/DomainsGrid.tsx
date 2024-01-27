@@ -7,8 +7,11 @@ import styles from './DomainsGrid.module.css';
 type Domain = {
   id: number;
   domain_name: string;
+  meta_description: string;
+  title: string;
+  price: number;
   description: string;
-  image_url: string | null; // Allow for null
+  image_url: string ; // Allow for null
 };
 
 // Update DomainsGridProps to use the updated Domain type

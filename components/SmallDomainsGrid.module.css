@@ -1,0 +1,27 @@
+/* Assuming this is the parent container of SmallDomainsGrid */
+.parentContainer {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  min-height: 100vh; /* Adjust height as needed */
+}
+
+/* components/SmallDomainsGrid.module.css */
+.grid {
+  display: grid;
+  grid-gap: 20px; /* Space between cards */
+  padding: 20px; /* Padding on the sides of the grid */
+  width: 100%; /* Set a max-width if the grid should not stretch too wide */
+  max-width: 1200px; /* Example max-width, adjust as needed */
+  margin: 0 auto; /* Keeps the grid centered */
+
+  /* Responsive grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust minmax values as needed */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr; /* Stack cards on smaller screens */
+  }
+}

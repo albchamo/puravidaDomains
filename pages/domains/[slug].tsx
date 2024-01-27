@@ -1,9 +1,10 @@
 // pages/domains/[slug].tsx
 import { GetStaticPaths, GetStaticProps } from 'next';
 import DomainDetail from '../../components/DomainDetail';
+import SmallDomainsGrid from '../../components/SmallDomainsGrid';
+import Header from '@/components/Header';
 import { supabase } from '../../utils/supabase/client';
 import React from 'react';
-import Header from '@/components/Header';
 
 type Domain = {
   id: number;
@@ -12,21 +13,12 @@ type Domain = {
   title: string;
   price: number;
   description: string;
-  image_url: string ; // Allow for null
+  image_url: string;
 };
 
 type Props = {
   domain: Domain | null;
-};
-
-const DomainPage: React.FC<Props> = ({ domain }) => {
-  return (
-    <>
-      <Header />
-      {/* Pass the domain prop to DomainDetail */}
-      <DomainDetail domain={domain} />
-    </>
-  );
+  additionalDomains: Domain[];
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -47,22 +39,59 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug;
   if (typeof slug !== 'string') {
-    return { props: { domain: null } };
+    return { props: { domain: null, additionalDomains: [] } };
   }
-    const { data: domains, error } = await supabase
+
+  const { data: domainData, error } = await supabase
     .from('domains')
     .select('*')
-    .ilike('domain_name', slug);
+    .eq('domain_name', slug)
+    .single();
 
- // Handle the case where the domain is not found
- if (error || !domains || domains.length === 0) {
-  console.error('Error fetching domain or domain not found:', error);
-  return { props: { domain: null } }; // Provide a null domain prop if not found
-}
+  if (error || !domainData) {
+    console.error('Error fetching domain:', error);
+    return { props: { domain: null, additionalDomains: [] } };
+  }
 
-// If domain is found, return it as a prop
-const domain = domains[0];
-return { props: { domain } };
+  const { data: allDomains } = await supabase.from('domains').select('domain_name');
+
+    // Check if allDomains is null
+    if (!allDomains) {
+      return { props: { domain: domainData, additionalDomains: [] } };
+    }
+  
+  const otherDomains = allDomains.filter(d => d.domain_name !== slug);
+  const randomDomains = [];
+  for (let i = 0; i < 4 && otherDomains.length > 0; i++) {
+    const randomIndex = Math.floor(Math.random() * otherDomains.length);
+    randomDomains.push(otherDomains.splice(randomIndex, 1)[0]);
+  }
+
+  const additionalDomains = await Promise.all(randomDomains.map(async (d) => {
+    const { data } = await supabase
+      .from('domains')
+      .select('*')
+      .eq('domain_name', d.domain_name)
+      .single();
+    return data;
+  }));
+
+  return {
+    props: {
+      domain: domainData,
+      additionalDomains: additionalDomains || []
+    }
+  };
+};
+
+const DomainPage: React.FC<Props> = ({ domain, additionalDomains }) => {
+  return (
+    <>
+      <Header />
+      <DomainDetail domain={domain} />
+      <SmallDomainsGrid domains={additionalDomains} />
+    </>
+  );
 };
 
 export default DomainPage;

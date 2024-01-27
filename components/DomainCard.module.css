@@ -9,6 +9,8 @@
   .imageContainer {
     position: relative;
     height: 200px; /* Set a fixed height or as needed */
+    width: 100% ; 
+
   }
   
   .image {

@@ -31,9 +31,9 @@ const DomainCard: React.FC<DomainCardProps> = ({ domain }) => {
         {domain.image_url ? (
         <Image 
         src={domain.image_url}
+        fill={true}
+        objectFit='cover'
         alt={domain.domain_name}
-        layout="fill"
-        objectFit="cover"
       />
       ) : (
         <div className={styles.placeholderImage}>No Image</div>

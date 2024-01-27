@@ -7,6 +7,6 @@ export type Domain = {
     title: string;
     price: number;
     description: string;
-    image_url: string | null;
+    image_url: string ;
   };
   

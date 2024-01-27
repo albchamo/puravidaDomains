@@ -7,8 +7,8 @@
   }
   
   .imageContainer {
-    width: 100%; /* Ensure the container takes up all available width */
-    overflow: hidden; /* Hide any overflow */
+    position: relative;
+    height: 200px; /* Set a fixed height or as needed */
   }
   
   .image {

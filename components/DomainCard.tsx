@@ -12,7 +12,7 @@ type Domain = {
   meta_description: string;
   title: string;
   description: string;
-  image_url: string | null; // Allow for null
+  image_url: string ; // Allow for null
 };
 
 type DomainCardProps = {

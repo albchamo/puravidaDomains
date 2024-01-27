@@ -29,7 +29,12 @@ const DomainCard: React.FC<DomainCardProps> = ({ domain }) => {
       <div className={styles.card}>
         <div className={styles.imageContainer}>
         {domain.image_url ? (
-        <img src={domain.image_url} alt={domain.domain_name} className={styles.image} />
+        <Image 
+        src={domain.image_url}
+        alt={domain.domain_name}
+        layout="fill"
+        objectFit="cover"
+      />
       ) : (
         <div className={styles.placeholderImage}>No Image</div>
       )}

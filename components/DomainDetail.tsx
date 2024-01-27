@@ -2,6 +2,8 @@
 import React from 'react';
 import styles from './DomainDetail.module.css';
 import Link from 'next/link'; // Import Link from next/link
+import Image from 'next/image';
+
 
 
 // Define the domain type to be used in both props and the component
@@ -28,7 +30,16 @@ type DomainDetailProps = {
   return (
     <div className={styles.container}>
       <div className={styles.imageSection}>
-        <img src={domain.image_url} alt={domain.domain_name} className={styles.domainImage} />
+      {domain.image_url && (
+          <div className={styles.imageContainer}>
+            <Image 
+              src={domain.image_url}
+              alt={domain.domain_name}
+              layout="fill"
+              objectFit="cover" // Adjust this as needed
+            />
+          </div>
+        )}
         <h3 className={styles.title}>{domain.title}</h3>
         <p className={styles.description}>{domain.meta_description}</p>
       </div>

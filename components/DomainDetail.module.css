@@ -8,6 +8,10 @@
     overflow: hidden;
     background: #FFFFFF;
   }
+  .imageContainer {
+    position: relative;
+    height: 300px; 
+  }
   
   .imageSection {
     flex-basis: 50%;
